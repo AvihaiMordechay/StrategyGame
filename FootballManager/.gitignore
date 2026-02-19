@@ -1,0 +1,139 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### OS-specific files ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+### Log files ###
+*.log
+*.log.*
+logs/
+*.out
+
+### Temporary files ###
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+*.backup
+*.orig
+
+### Compiled files ###
+*.class
+# Built JARs (dependencies are in ~/.m2, not in project)
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+# Maven Wrapper (should be committed)
+mvnw
+mvnw.cmd
+
+### Package files ###
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+### Coverage reports ###
+.nyc_output/
+coverage/
+*.lcov
+*.coverage
+htmlcov/
+
+### Spring Boot ###
+spring-boot-*.log
+
+### Database ###
+*.db
+*.sqlite
+*.sqlite3
+
+### Secrets and Sensitive Data ###
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+*.env
+
+# Application configuration with secrets
+application.yml
+application.properties
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+application-prod.yml
+application-prod.properties
+application-secret.yml
+application-secret.properties
+**/application*.yml
+**/application*.properties
+
+# Secret files
+secrets/
+*.secret
+*.key
+*.pem
+*.p12
+*.jks
+*.keystore
+*.truststore
+credentials.json
+credentials.yml
+credentials.properties
+
+# API keys and tokens
+**/api-keys.*
+**/tokens.*
+**/secrets.*
+
+# Database credentials
+**/database.*
+**/db.*
