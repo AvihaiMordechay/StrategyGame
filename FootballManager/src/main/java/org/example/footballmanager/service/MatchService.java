@@ -1,7 +1,8 @@
 package org.example.footballmanager.service;
 
 import org.example.footballmanager.dto.MatchDTO;
-import org.example.footballmanager.model.Match;
+import org.example.footballmanager.model.match.Match;
+import org.example.footballmanager.repository.MatchLineupRepository;
 import org.example.footballmanager.repository.MatchRepository;
 import org.example.footballmanager.utils.enums.MatchStatus;
 import org.example.footballmanager.utils.enums.TeamSide;
@@ -14,10 +15,12 @@ import java.util.ArrayList;
 @Service
 public class MatchService {
     private final MatchRepository matchRepository;
+    private final MatchLineupRepository matchLineupRepository;
     private final ClubService clubService;
 
-    public MatchService(MatchRepository matchRepository, ClubService clubService) {
+    public MatchService(MatchRepository matchRepository, MatchLineupRepository matchLineupRepository, ClubService clubService) {
         this.matchRepository = matchRepository;
+        this.matchLineupRepository = matchLineupRepository;
         this.clubService = clubService;
     }
 
@@ -27,6 +30,7 @@ public class MatchService {
         match.setAwayClubId(matchDTO.getAwayClubId());
         match.setStatus(MatchStatus.SCHEDULED);
         match.setStartTime(matchDTO.getStartTime());
+        match.setEvents(new ArrayList<>());
         match.setHomeScore(0);
         match.setAwayScore(0);
         match.setCurrentTick(0);
@@ -40,12 +44,10 @@ public class MatchService {
     public void prepareMatch(Long matchId) {
         Match match = getMatch(matchId);
         match.setStatus(MatchStatus.NEXT_ROUND);
-        match.setEvents(new ArrayList<>());
-        match.setHomeScore(0);
-        match.setAwayScore(0);
-        match.setCurrentTick(0);
         try {
-            match.setHomeSquad(clubService.getMatchSquad(match.getHomeClubId()));
+            match.setHomeLineup(clubService.getMatchLineup(match.getHomeClubId()));
+            match.getHomeLineup().setMatch(match);
+            matchLineupRepository.save(match.getHomeLineup());
         } catch (NoLineupDefinedException e) {
             match.setStatus(MatchStatus.FINISHED);
             addGoal(match, TeamSide.AWAY, 3);
@@ -53,7 +55,9 @@ public class MatchService {
             // TODO: MINUS POINTS TO HOME CLUB (LEAGUE)
         }
         try {
-            match.setAwaySquad(clubService.getMatchSquad(match.getAwayClubId()));
+            match.setAwayLineup(clubService.getMatchLineup(match.getAwayClubId()));
+            match.getAwayLineup().setMatch(match);
+            matchLineupRepository.save(match.getAwayLineup());
         } catch (NoLineupDefinedException e) {
             match.setStatus(MatchStatus.FINISHED);
             addGoal(match, TeamSide.HOME, 3);

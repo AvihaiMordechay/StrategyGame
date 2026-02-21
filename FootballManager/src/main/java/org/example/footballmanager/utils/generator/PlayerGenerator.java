@@ -2,7 +2,6 @@ package org.example.footballmanager.utils.generator;
 
 import org.example.footballmanager.dto.PlayerDTO;
 import org.example.footballmanager.utils.enums.PlayerPosition;
-import org.example.footballmanager.utils.enums.PlayerStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -54,9 +53,9 @@ public class PlayerGenerator {
                     firstName,
                     lastName,
                     age,
-                    position,
-                    PlayerStatus.ACTIVE,
-                    attributesGenerator.generateAttributesForPosition(position)
+                    false,
+                    attributesGenerator.generateAttributesForPosition(position),
+                    position
             );
     }
 

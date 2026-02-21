@@ -1,6 +1,6 @@
 package org.example.footballmanager.repository;
 
-import org.example.footballmanager.model.Club;
+import org.example.footballmanager.model.club.Club;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package org.example.footballmanager.model;
+package org.example.footballmanager.model.match;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,5 +20,5 @@ public class Ball {
     private int positon;
     private BallPhase phase;
     @Enumerated(EnumType.STRING)
-    private TeamSide teamSide;
+    private TeamSide possessionTeam;
 }

@@ -1,4 +1,4 @@
-package org.example.footballmanager.model;
+package org.example.footballmanager.model.match;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,10 +21,10 @@ public class Match {
     @Enumerated(EnumType.STRING)
     private MatchStatus status;
     private LocalDateTime startTime;
-    @ManyToMany
-    private List<Player> homeSquad;
-    @ManyToMany
-    private List<Player> awaySquad;
+    @OneToOne
+    private MatchLineup homeLineup;
+    @OneToOne
+    private MatchLineup awayLineup;
     private Integer homeScore;
     private Integer awayScore;
     private Integer currentTick;

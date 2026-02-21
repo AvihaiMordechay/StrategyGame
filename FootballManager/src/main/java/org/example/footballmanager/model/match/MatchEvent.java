@@ -1,4 +1,4 @@
-package org.example.footballmanager.model;
+package org.example.footballmanager.model.match;
 
 import jakarta.persistence.*;
 import org.example.footballmanager.utils.enums.EventType;

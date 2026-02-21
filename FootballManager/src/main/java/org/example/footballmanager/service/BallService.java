@@ -1,9 +1,10 @@
 package org.example.footballmanager.service;
 
-import org.example.footballmanager.model.Ball;
-import org.example.footballmanager.model.Match;
+import org.example.footballmanager.model.match.Ball;
+import org.example.footballmanager.model.match.Match;
 import org.example.footballmanager.repository.BallRepository;
 import org.example.footballmanager.utils.enums.BallPhase;
+import org.example.footballmanager.utils.enums.TeamSide;
 import org.example.footballmanager.utils.exceptions.BallNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class BallService {
         ball.setMatch(match);
         ball.setPositon(MIDDLE_POSITION);
         ball.setPhase(BallPhase.BUILD_UP);
+        ball.setPossessionTeam(TeamSide.HOME);
         ball = ballRepository.save(ball);
         match.setBall(ball);
         return ball;

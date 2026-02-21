@@ -1,9 +1,9 @@
 package org.example.footballmanager.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.footballmanager.model.embeddable.PlayerAttributes;
 import org.example.footballmanager.utils.enums.PlayerPosition;
-import org.example.footballmanager.utils.enums.PlayerStatus;
 
 @Getter
 public class PlayerDTO {
@@ -11,25 +11,17 @@ public class PlayerDTO {
     private String firstName;
     private String lastName;
     private int age;
-    private PlayerPosition position;
-    private PlayerStatus currentStatus;
+    private boolean hasClub;
     private PlayerAttributes attributes;
+    private PlayerPosition position;
 
-    public PlayerDTO(Long id,
-                     String firstName,
-                     String lastName,
-                     int age,
-                     PlayerPosition position,
-                     PlayerStatus currentStatus,
-                     PlayerAttributes attributes)
-    {
+    public PlayerDTO(Long id, String firstName, String lastName, int age, boolean hasClub, PlayerAttributes attributes, PlayerPosition position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.position = position;
-        this.currentStatus = currentStatus;
+        this.hasClub = hasClub;
         this.attributes = attributes;
+        this.position = position;
     }
-
 }

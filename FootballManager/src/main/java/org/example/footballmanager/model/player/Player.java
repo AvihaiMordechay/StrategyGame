@@ -1,11 +1,10 @@
-package org.example.footballmanager.model;
+package org.example.footballmanager.model.player;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.footballmanager.model.embeddable.PlayerAttributes;
 import org.example.footballmanager.utils.enums.PlayerPosition;
-import org.example.footballmanager.utils.enums.PlayerStatus;
 
 @Setter
 @Getter
@@ -15,16 +14,15 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
     private String lastName;
     private int age;
-    @Enumerated(EnumType.STRING)
-    private PlayerPosition position;
-    @Enumerated(EnumType.STRING)
-    private PlayerStatus currentStatus;
+    private boolean hasClub;
+
     @Embedded
     private PlayerAttributes attributes;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
-    private Club club;
+
+    @Enumerated(EnumType.STRING)
+    private PlayerPosition defaultPosition;
 }

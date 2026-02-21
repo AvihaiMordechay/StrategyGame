@@ -1,6 +1,6 @@
 package org.example.footballmanager.engine;
 
-import org.example.footballmanager.model.Match;
+import org.example.footballmanager.model.match.Match;
 import org.example.footballmanager.repository.MatchRepository;
 import org.example.footballmanager.service.MatchService;
 import org.example.footballmanager.utils.enums.MatchStatus;

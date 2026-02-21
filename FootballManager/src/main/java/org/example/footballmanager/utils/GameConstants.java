@@ -6,4 +6,6 @@ public class GameConstants {
     public static final int MIN_PLAYERS_MATCH_SQUAD = 7;
     public static final int PLAYERS_ON_FIELD = 11;
     public static final int MAX_SUBSTITUTIONS = 5;
+    public static final int TICKS_GAME = 10;
+
 }

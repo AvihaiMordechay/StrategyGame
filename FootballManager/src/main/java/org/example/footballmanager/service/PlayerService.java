@@ -2,7 +2,7 @@ package org.example.footballmanager.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.footballmanager.dto.PlayerDTO;
-import org.example.footballmanager.model.Player;
+import org.example.footballmanager.model.player.Player;
 import org.example.footballmanager.repository.PlayerRepository;
 import org.example.footballmanager.utils.generator.PlayerGenerator;
 import org.springframework.stereotype.Service;
@@ -26,9 +26,9 @@ public class PlayerService {
         player.setFirstName(playerDTO.getFirstName());
         player.setLastName(playerDTO.getLastName());
         player.setAge(playerDTO.getAge());
-        player.setPosition(playerDTO.getPosition());
-        player.setCurrentStatus(playerDTO.getCurrentStatus());
+        player.setHasClub(false);
         player.setAttributes(playerDTO.getAttributes());
+        player.setDefaultPosition(playerDTO.getPosition());
         playerRepository.save(player);
     }
 

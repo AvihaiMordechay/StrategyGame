@@ -1,6 +1,7 @@
 package org.example.footballmanager.controller;
 
 import org.example.footballmanager.dto.MatchDTO;
+import org.example.footballmanager.engine.MatchOrchestrator;
 import org.example.footballmanager.service.MatchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MatchController {
 
     private final MatchService matchService;
+    private final MatchOrchestrator matchOrchestrator;
 
-    public MatchController(MatchService matchService) {
+    public MatchController(MatchService matchService, MatchOrchestrator matchOrchestrator) {
         this.matchService = matchService;
+        this.matchOrchestrator = matchOrchestrator;
     }
 
     @PostMapping("/create")
@@ -26,9 +29,9 @@ public class MatchController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/{matchId}/prepare")
-    public ResponseEntity<?> prepareMatch(@PathVariable Long matchId) {
-        matchService.prepareMatch(matchId);
+    @PostMapping("/prepare")
+    public ResponseEntity<?> prepareMatch() {
+        matchOrchestrator.process();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

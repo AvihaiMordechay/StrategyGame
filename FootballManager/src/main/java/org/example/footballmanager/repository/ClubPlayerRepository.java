@@ -1,9 +1,9 @@
 package org.example.footballmanager.repository;
 
-import org.example.footballmanager.model.player.Player;
+import org.example.footballmanager.model.player.ClubPlayer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, Long> {
+public interface ClubPlayerRepository extends JpaRepository<ClubPlayer, Long> {
 }
